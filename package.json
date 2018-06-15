@@ -6,6 +6,7 @@
 	"scripts": {
       "bootsrtap": "lerna bootstrap",
 	  "test": "lerna run test",
+	  "build": "lerna run build && yarn run docs:build",
 	  "docs:dev": "vuepress dev docs",
 	  "docs:build": "vuepress build docs"
 	},
