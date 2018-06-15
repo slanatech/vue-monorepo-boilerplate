@@ -1,0 +1,23 @@
+{
+  "name": "@vue-monorepo-boilerplate/common",
+  "version": "0.1.0",
+  "description": "Module with common code",
+  "author": "<sv2@github.com>",
+  "private": true,
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo 'TEST TODO'"
+  },
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "bunyan-rotating-file-stream": "^1.6.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  },
+  "engines": {
+    "node": ">= 8",
+    "npm": ">= 5"
+  }
+}

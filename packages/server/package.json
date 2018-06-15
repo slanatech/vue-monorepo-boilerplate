@@ -1,0 +1,20 @@
+{
+  "name": "@vue-monorepo-boilerplate/server",
+  "version": "0.1.0",
+  "description": "test server",
+  "author": "<sv2@github.com>",
+  "private": true,
+  "scripts": {
+    "test": "echo 'TEST TODO SERVER'"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "body-parser": "^1.18.3",
+    "@vue-monorepo-boilerplate/common": "^0.1.0",
+    "@vue-monorepo-boilerplate/ui": "^0.1.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
