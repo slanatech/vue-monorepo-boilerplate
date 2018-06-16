@@ -1,22 +1,22 @@
 {
   "private": true,
-	"workspaces": [
+  "workspaces": [
     "packages/*"
   ],
-	"scripts": {
-      "bootsrtap": "lerna bootstrap",
-	  "test": "lerna run test",
-	  "build": "lerna run build && yarn run docs:build",
-	  "docs:dev": "vuepress dev docs",
-	  "docs:build": "vuepress build docs",
-	  "docs:deploy": "yarn run docs:build && ./scripts/docsdeploy.sh"
-	},
-	"devDependencies": {
-		"lerna": "^2.11.0",
-      "vuepress": "^0.10.1",
-      "vuepress-theme-vue": "^1.0.3"
-    },
-	"engines": {
-		"node": ">= 8"
-	}
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "test": "lerna run test",
+    "build": "lerna run build && yarn run docs:build",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "docs:deploy": "yarn run docs:build && ./scripts/docsdeploy.sh"
+  },
+  "devDependencies": {
+    "lerna": "^2.11.0",
+    "vuepress": "^0.10.1",
+    "vuepress-theme-vue": "^1.0.3"
+  },
+  "engines": {
+    "node": ">= 8"
+  }
 }
