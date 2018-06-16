@@ -1,11 +1,12 @@
 {
   "name": "@vue-monorepo-boilerplate/common",
-  "version": "0.1.1",
+  "version": "0.1.5",
   "description": "Module with common code",
   "author": "<sv2@github.com>",
   "private": false,
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "main": "lib/index.js",
   "scripts": {
