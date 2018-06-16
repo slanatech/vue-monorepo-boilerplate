@@ -5,6 +5,8 @@
     <h3>Common Module Info</h3>
     <p>{{commonModuleInfo}}</p>
 
+    <h4>{{commonModuleName}}</h4>
+
     <p>
       For guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -45,7 +47,8 @@ export default {
   },
   data () {
     return {
-      commonModuleInfo: commonModule.getInfo()
+      commonModuleInfo: commonModule.getInfo(),
+      commonModuleName: commonModule.getInfo().name
     }
   }
 }

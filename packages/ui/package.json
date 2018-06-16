@@ -8,7 +8,8 @@
     "lint": "vue-cli-service lint",
     "test": "yarn run test:unit && yarn run test:e2e",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e --headless"
+    "test:e2e": "vue-cli-service test:e2e --headless",
+    "test:e2ehead": "vue-cli-service test:e2e"
   },
   "dependencies": {
     "vue": "^2.5.16",
