@@ -7,7 +7,6 @@ node_modules
 
 # dist
 dist
-docs/.vuepress/dist/
 
 # Log files
 npm-debug.log*
