@@ -1,6 +1,6 @@
 {
   "name": "@vue-monorepo-boilerplate/server",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "test server",
   "author": "<sv2@github.com>",
   "private": true,
@@ -8,10 +8,10 @@
     "test": "echo 'TEST TODO SERVER'"
   },
   "dependencies": {
-    "express": "^4.16.3",
+    "@vue-monorepo-boilerplate/common": "^0.1.1",
+    "@vue-monorepo-boilerplate/ui": "^0.1.1",
     "body-parser": "^1.18.3",
-    "@vue-monorepo-boilerplate/common": "^0.1.0",
-    "@vue-monorepo-boilerplate/ui": "^0.1.0"
+    "express": "^4.16.3"
   },
   "devDependencies": {
     "chai": "^3.5.0",
