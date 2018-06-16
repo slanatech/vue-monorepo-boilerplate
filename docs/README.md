@@ -21,6 +21,8 @@ footer: MIT Licensed | Copyright © 2018 slana.tech
 
 ## Getting Started
 
+TEST
+
 ``` bash
 echo 'TODO'
 ```

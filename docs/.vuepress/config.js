@@ -1,4 +1,5 @@
 module.exports = {
+  base: '/vue-monorepo-boilerplate/',
   locales: {
     '/': {
       lang: 'en-US',
