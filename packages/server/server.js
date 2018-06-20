@@ -24,6 +24,7 @@ app.use(expressBodyParser.urlencoded({limit: '10mb', extended: true}))
 app.use(expressBodyParser.json({limit: '10mb'}))
 
 app.get('/info', function (req, res) {
+  console.log('GET /info');
   res.json({name: app.get('svcInfo').name, version: app.get('svcInfo').version})
 })
 

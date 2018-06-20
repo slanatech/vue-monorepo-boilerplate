@@ -6,10 +6,11 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test": "yarn run test:unit && yarn run test:e2e",
+    "test": "yarn run test:unit && yarn run test:e2e:full",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e --headless",
-    "test:e2ehead": "vue-cli-service test:e2e"
+    "test:e2e:headed": "vue-cli-service test:e2e",
+    "test:e2e:full": "concurrently -k --kill-others-on-fail \"npm start --prefix ../server\" npm:test:e2e"
   },
   "dependencies": {
     "vue": "^2.5.16",

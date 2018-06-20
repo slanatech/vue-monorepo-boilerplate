@@ -17,7 +17,7 @@ export default new Vuex.Store({
     loadServerInfo ({commit}) {
       axios.get('/info')
         .then(function (response) {
-          commit('SET_SERVER_INFO', {serverInfo: response})
+          commit('SET_SERVER_INFO', {serverInfo: response.data})
         })
         .catch(function (error) {
           commit('SET_SERVER_INFO', {serverInfo: 'ERROR:' + JSON.stringify(error)})

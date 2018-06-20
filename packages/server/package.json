@@ -5,6 +5,7 @@
   "author": "<sv2@github.com>",
   "private": true,
   "scripts": {
+    "start": "node server.js",
     "test": "echo 'TEST TODO SERVER'"
   },
   "dependencies": {
