@@ -20,7 +20,7 @@ export default new Vuex.Store({
           commit('SET_SERVER_INFO', {serverInfo: response})
         })
         .catch(function (error) {
-          console.log(error)
+          commit('SET_SERVER_INFO', {serverInfo: 'ERROR:' + JSON.stringify(error)})
         })
     }
   }
