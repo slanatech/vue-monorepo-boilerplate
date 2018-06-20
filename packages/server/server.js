@@ -40,13 +40,14 @@ server.listen(app.get('port'), function () {
 
 
 process.on('SIGTERM', function () {
-  process.exit()
+  console.log('SIGTERM: Exiting ...')
+  process.exit(0)
 });
 
 process.on('SIGINT', function () {
-  process.exit()
+  process.exit(-1)
 });
 
 process.on('uncaughtException', function (err) {
-  process.exit();
+  process.exit(-1);
 });
