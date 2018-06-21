@@ -1,8 +1,13 @@
 {
+  "version": "0.1.7",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
+  "config": {
+    "imageRepo": "slanatech/vue-monorepo-boilerplate",
+    "imageName": "vue-monorepo-boilerplate"
+  },
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "test": "npm run test:common && npm run test:server && npm run test:ui",
@@ -12,7 +17,8 @@
     "build": "lerna run build",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "docs:deploy": "yarn run docs:build && ./scripts/docsdeploy.sh"
+    "docs:deploy": "yarn run docs:build && ./scripts/docsdeploy.sh",
+    "docker:build": "docker image build -t $npm_package_config_imageRepo:$npm_package_version -f ./docker/Dockerfile ."
   },
   "devDependencies": {
     "lerna": "^2.11.0",
