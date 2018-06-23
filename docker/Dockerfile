@@ -8,9 +8,16 @@ ENV NODE_ENV=production
 RUN yarn global add lerna
 
 COPY package.json lerna.json yarn.lock /app/
-RUN yarn
+COPY packages/common/package.json /app/packages/common/package.json
+COPY packages/server/package.json /app/packages/server/package.json
+COPY packages/ui/package.json /app/packages/ui/package.json
 
-COPY packages/common /app/packages/common
+RUN yarn install --production=true
+
+# Application Packages
+ADD packages/common/lib /app/packages/common/lib/
+COPY packages/server/server.js /app/packages/server/server.js
+ADD packages/ui/dist /app/packages/ui/dist/
 
 RUN yarn run bootstrap
 
