@@ -1,10 +1,13 @@
 # Travis CI config
 # http://docs.travis-ci.com/user/languages/javascript-with-nodejs/
 
-sudo: false
+sudo: required
 language: node_js
 node_js:
     - "8"
+
+services:
+  - docker
 
 branches:
   only:
@@ -14,6 +17,10 @@ branches:
 before_install:
   - yarn && lerna bootstrap --concurrency=1
 
+script:
+  - yarn run docker:build
+
 after_success:
   - ls -R1 coverage-report/lcov.info                                        # list the files (for debugging)
   - cat coverage-report/lcov.info | node_modules/coveralls/bin/coveralls.js # send code-coverage data to Coveralls
+
