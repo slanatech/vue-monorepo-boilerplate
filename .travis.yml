@@ -18,6 +18,8 @@ before_install:
   - yarn && lerna bootstrap --concurrency=1
 
 script:
+  - yarn run build
+  - yarn run test
   - yarn run docker:build
 
 after_success:
