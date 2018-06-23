@@ -4,6 +4,17 @@
   "workspaces": [
     "packages/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/slanatech/vue-monorepo-boilerplate"
+  },
+  "author": "https://github.com/sv2",
+  "homepage": "https://slanatech.github.io/vue-monorepo-boilerplate/",
+  "bugs": {
+    "url": "https://github.com/slanatech/vue-monorepo-boilerplate/issues",
+    "email": "sv2@slana.tech"
+  },
+  "license": "MIT",
   "config": {
     "imageRepo": "slanatech/vue-monorepo-boilerplate",
     "imageName": "vue-monorepo-boilerplate"

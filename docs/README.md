@@ -5,17 +5,17 @@ actionText: Get Started →
 actionLink: /guide/
 features:
 - title: Monorepo
-  details: AAAA
+  details: Managing monorepo packages with Lerna and Yarn workspaces
 - title: FullStack
-  details: AAA
+  details: UI, Server, Common module
 - title: Vue
-  details: AAA
-- title: Lerna
-  details: AAA
+  details: Vue SPA using Vue-cli 3 
 - title: Vuepress
-  details: AAA
+  details: Docs using Vuepress
 - title: Docker
-  details: AAA
+  details: Docker image build with fullstack app
+- title: CI/CD
+  details: Travis CI
 footer: MIT Licensed | Copyright © 2018 slana.tech
 ---
 
