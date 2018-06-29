@@ -1,5 +1,5 @@
 {
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": true,
   "workspaces": [
     "packages/*"
@@ -30,7 +30,8 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:deploy": "yarn run docs:build && ./scripts/docsdeploy.sh",
-    "docker:build": "docker image build -t $npm_package_config_imageRepo:$npm_package_version -f ./docker/Dockerfile ."
+    "docker:build": "docker image build -t $npm_package_config_imageRepo:$npm_package_version -f ./docker/Dockerfile .",
+    "publish": "lerna publish"
   },
   "devDependencies": {
     "lerna": "^2.11.0",
