@@ -33,8 +33,8 @@ yarn run bootstrap
 # 4. Run Build in all packages 
 yarn run build
 
-# 5. Run Tests in all packages 
-yarn run test
+# 5. Dev: Run Server and in parallel start UI Serve with hot reload 
+yarn run dev
 
 ```
 
