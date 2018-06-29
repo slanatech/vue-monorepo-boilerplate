@@ -3,6 +3,9 @@ home: true
 heroImage: /logo.png
 actionText: Get Started →
 actionLink: /guide/
+meta:
+  - name: google-site-verification
+    content: 1a3AJnjk7DhVoOQtRPd001OjW9bRrAgIgsIVlZApcgE
 features:
 - title: Monorepo
   details: Managing monorepo packages with Lerna and Yarn workspaces
