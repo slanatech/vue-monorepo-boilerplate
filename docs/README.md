@@ -22,10 +22,22 @@ features:
 footer: MIT Licensed | Copyright © 2018 slana.tech
 ---
 
-## Getting Started
+## Quick start
 
-TEST
+```bash
+# 1. Clone the repository.
+git clone https://github.com/slanatech/vue-monorepo-boilerplate.git my-new-project
 
-``` bash
-echo 'TODO'
+# 2. Enter your newly-cloned folder
+cd my-new-project
+
+# 3. Bootstrap
+yarn run bootstrap
+
+# 4. Run Build in all packages 
+yarn run build
+
+# 5. Dev: Run Server and in parallel start UI Serve with hot reload 
+yarn run dev
+
 ```
