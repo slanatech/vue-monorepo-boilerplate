@@ -1,12 +1,14 @@
 # vue-monorepo-boilerplate
 
+[![Build Status](https://travis-ci.org/slanatech/vue-monorepo-boilerplate.svg?branch=master)](https://travis-ci.org/slanatech/vue-monorepo-boilerplate)
+
 ### Vue Fullstack App Monorepo Boilerplate
 
 * Lerna and Yarn Workspaces to manage monorepo
 * Full Stack: Front End, Server, Common module packages   
-* Front End: Vue SPA package using Vue-cli 3
-* Server package using Node+Express
-* Common package used in both Front End and Server
+* Front End package: Vue SPA using Vue-cli 3
+* Server package: Node+Express
+* Common package: common code used in both Front End and Server
 * Docs using Vuepress and Github pages
 * CI/CD using Travis CI
 * Docker build   
@@ -53,7 +55,7 @@ yarn run dev
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:deploy": "yarn run docs:build && ./scripts/docsdeploy.sh",
-    "docker:build": "docker image build -t $npm_package_config_imageRepo:$npm_package_version -f ./docker/Dockerfile .",
+    "docker:build": "IMAGE_VERSION=$(node -p \"require('./lerna.json').version\") && docker image build -t $npm_package_config_imageRepo:$IMAGE_VERSION -f ./docker/Dockerfile .",
     "publish": "lerna publish"
   }
 
@@ -112,9 +114,11 @@ Top-level script `yarn run docker:build` builds Docker image that contains entir
 * Common module package
 * Server package that implements API and serves UI static files 
 
-Docker image entrypoint scrip just starts server, and you may access UI at [http://localhost:3200](http://localhost:3200)
+Docker build context is top level directory, so all app packages can be accessed.
 
-See `Dockefile`: https://github.com/slanatech/vue-monorepo-boilerplate/blob/master/docker/Dockerfile
+Docker image entrypoint script just starts server, and you may access UI at [http://localhost:3200](http://localhost:3200)
+
+See `Dockefile` [https://github.com/slanatech/vue-monorepo-boilerplate/blob/master/docker/Dockerfile](https://github.com/slanatech/vue-monorepo-boilerplate/blob/master/docker/Dockerfile)
 
 Dockerfile is set up with two goals in mind:
 
@@ -159,12 +163,38 @@ Example of `docker run`:
 docker run -d -p 3200:3200 --name app --restart always slanatech/vue-monorepo-boilerplate:0.1.8
 ```
 
-## Travis CI 
+## CI/CD
 
-See `.travis.yml`: https://github.com/slanatech/vue-monorepo-boilerplate/blob/master/.travis.yml
-
-
+CI/CD is set up using Travis CI
 
 
+See `.travis.yml` [https://github.com/slanatech/vue-monorepo-boilerplate/blob/master/.travis.yml](https://github.com/slanatech/vue-monorepo-boilerplate/blob/master/.travis.yml)
+
+`before_install` executes `bootstrap` to ensure local packages are resolved:
+
+```yaml
+before_install:
+  - yarn && yarn run bootstrap
+``` 
+
+Then build script just executes `build`,`test`, and `docker:build`
+
+```yaml
+script:
+  - yarn run build
+  - yarn run test
+  - yarn run docker:build
+
+```
+If desired, you may extend `.travis.yml` adding publishing packages to npm, and publishing docker image to Docker registry.  
 
 
+## Enhancements and Bug Reports
+
+If you find a bug, or have an enhancement in mind please post [issues](https://github.com/slanatech/vue-monorepo-boilerplate/issues) on GitHub.
+Suggestions and feedback are very welcome !
+
+
+## License
+ 
+MIT

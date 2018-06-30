@@ -1,5 +1,4 @@
 {
-  "version": "0.1.8",
   "private": true,
   "workspaces": [
     "packages/*"
@@ -30,7 +29,8 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:deploy": "yarn run docs:build && ./scripts/docsdeploy.sh",
-    "docker:build": "docker image build -t $npm_package_config_imageRepo:$npm_package_version -f ./docker/Dockerfile .",
+    "getv": "echo $IMAGE_VERSION",
+    "docker:build": "IMAGE_VERSION=$(node -p \"require('./lerna.json').version\") && docker image build -t $npm_package_config_imageRepo:$IMAGE_VERSION -f ./docker/Dockerfile .",
     "publish": "lerna publish"
   },
   "devDependencies": {
