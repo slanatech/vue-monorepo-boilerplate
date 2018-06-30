@@ -15,7 +15,7 @@ branches:
     - /^PR /            # also build pull requests
 
 before_install:
-  - yarn && lerna bootstrap --concurrency=1
+  - yarn && yarn run bootstrap
 
 script:
   - yarn run build
