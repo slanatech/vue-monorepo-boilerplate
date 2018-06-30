@@ -73,6 +73,25 @@ yarn run dev
 * `publish` - publish public packages using lerna 
 
 
+## Dev   
+
+Top-level script `yarn run dev` starts Server package that contains back end API implementation.
+And in parallel starts `vue-cli-service serve` script in UI package.
+This allows UI development with hot reloading, with dev server proxying API requests to API implementation
+
+
+`vue.config.js` in UI package is configured to proxy API requests:
+
+```js
+// vue.config.js
+module.exports = {
+  devServer: {
+    proxy: 'http://localhost:3200'
+  }
+}
+```    
+  
+
 ## Publishing packages  
 
 ```bash
@@ -85,9 +104,67 @@ Depending on your needs, you may choose to keep some or all packages private by 
 
 For illustration, in this boilerplate common package is made public, and other packages are private.
 
+## Docker Build 
+
+Top-level script `yarn run docker:build` builds Docker image that contains entire Full Stack app: 
+
+* UI package - compiled UI static files (`/dist`)
+* Common module package
+* Server package that implements API and serves UI static files 
+
+Docker image entrypoint scrip just starts server, and you may access UI at [http://localhost:3200](http://localhost:3200)
+
+See `Dockefile`: https://github.com/slanatech/vue-monorepo-boilerplate/blob/master/docker/Dockerfile
+
+Dockerfile is set up with two goals in mind:
+
+* Utilize layers cache with minimal rebuild when app code changes
+* Don't publish all packages to npm on every build 
+
+These layers with 3rd party modules will be cached on Docker image rebuild if only app code changes:
+
+```dockerfile
+RUN yarn global add lerna
+
+COPY package.json lerna.json yarn.lock /app/
+COPY packages/common/package.json /app/packages/common/package.json
+COPY packages/server/package.json /app/packages/server/package.json
+COPY packages/ui/package.json /app/packages/ui/package.json
+
+RUN yarn install --production=true
+
+``` 
+
+And this copies app code - only relevant content from local packages - to Docker image.
+These layers will be rebuilt when app code changes:
+
+```dockerfile
+# Application Packages
+ADD packages/common/lib /app/packages/common/lib/
+COPY packages/server/server.js /app/packages/server/server.js
+ADD packages/ui/dist /app/packages/ui/dist/
+``` 
+
+Finally, `bootstrap` to ensure proper symlinks to local packages are set up in `node_modules`: 
+
+```dockerfile
+RUN yarn run bootstrap
+```   
+
+Example of `docker run`:
+
+```bash
+#!/usr/bin/env bash
+
+docker run -d -p 3200:3200 --name app --restart always slanatech/vue-monorepo-boilerplate:0.1.8
+```
+
 ## Travis CI 
 
-See [.travis.yml](https://github.com/slanatech/vue-monorepo-boilerplate/blob/master/.travis.yml)
+See `.travis.yml`: https://github.com/slanatech/vue-monorepo-boilerplate/blob/master/.travis.yml
 
-## Docker Build 
+
+
+
+
 
